@@ -17,13 +17,119 @@
     "solar": "Solar Energy"
   },
   "hero": {
+    "badge": "Mongolia's Leading Group",
     "title": "MMS Group",
     "subtitle": "Energy • Engineering • Solutions",
-    "cta": "Explore Our Businesses",
-    "learnMore": "Learn More"
+    "description": "MMS Group's business platforms in construction, mining, engineering, electrical, and solar energy.",
+    "ctaExplore": "Explore Businesses",
+    "ctaProducts": "View Products",
+    "ctaContact": "Contact Us"
+  },
+  "businessHub": {
+    "title": "Business Platforms",
+    "subtitle": "Explore MMS Group's business directions",
+    "badge": "Business",
+    "visit": "Visit",
+    "businesses": {
+      "milwaukee": {
+        "title": "Milwaukee Tools",
+        "description": "Professional tools and equipment"
+      },
+      "electric": {
+        "title": "Electrical Products",
+        "description": "Electrical equipment and cables"
+      },
+      "solar": {
+        "title": "Solar Energy",
+        "description": "Solar energy systems and installation"
+      },
+      "engineering": {
+        "title": "Engineering",
+        "description": "Project management and design"
+      },
+      "construction": {
+        "title": "Construction Solutions",
+        "description": "Construction materials and equipment"
+      },
+      "mining": {
+        "title": "Mining Solutions",
+        "description": "Mining equipment and solutions"
+      }
+    }
+  },
+  "products": {
+    "title": "Featured Products",
+    "subtitle": "From our business platforms",
+    "badge": "Products",
+    "viewAll": "View All",
+    "items": {
+      "milwaukee": "Milwaukee M18 FUEL",
+      "solar": "Solar Panel 500W",
+      "electric": "Electrical Cable",
+      "engineering": "Engineering Service"
+    }
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "About MMS Group",
+    "description": "MMS Group is a leading multi-industry group operating in Mongolia. We implement international standard solutions in construction, mining, engineering, electrical, and solar energy sectors.",
+    "cta": "Learn More",
+    "stats": {
+      "years": "Years",
+      "projects": "Projects",
+      "clients": "Clients",
+      "businesses": "Business Units"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Projects across our business sectors",
+    "badge": "Projects",
+    "viewAll": "All Projects",
+    "items": {
+      "project1": {
+        "title": "Construction Project 1",
+        "description": "Major construction project",
+        "category": "Construction"
+      },
+      "project2": {
+        "title": "Mining Project 2",
+        "description": "Mining equipment supply",
+        "category": "Mining"
+      },
+      "project3": {
+        "title": "Solar Energy Project",
+        "description": "Solar energy installation",
+        "category": "Solar"
+      }
+    }
+  },
+  "contactCta": {
+    "title": "Let's Work Together",
+    "description": "Contact us for project consultation",
+    "cta": "Contact Us",
+    "email": "info@mms.mn"
   },
   "footer": {
     "rights": "All rights reserved",
-    "tagline": "Energy • Engineering • Solutions"
+    "tagline": "Energy • Engineering • Solutions",
+    "description": "Construction, mining, engineering, electrical and solar energy solutions.",
+    "links": "Links",
+    "businesses": "Business Units",
+    "contact": "Contact"
+  },
+  "contactPage": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send",
+    "address": "Address",
+    "addressText": "Ulaanbaatar, Mongolia",
+    "platforms": "Business Platforms",
+    "success": "Thank you! Message sent successfully.",
+    "error": "Error occurred. Please try again."
   }
 }

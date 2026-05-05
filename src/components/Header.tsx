@@ -1,14 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 
 interface BusinessItem {
-  label: string;
+  id: string;
   href: string;
   external?: boolean;
-  description?: string;
   color?: string;
 }
 
@@ -18,32 +17,14 @@ const LABELS: Record<string, string> = {
   zh: "中",
 };
 
-const businessItems: Record<string, BusinessItem[]> = {
-  mn: [
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "Мэргэжлийн багаж", color: "#ef4444" },
-    { label: "Цахилгаан бүтээгдэхүүн", href: "https://electric.source.mn", external: true, description: "Цахилгаан тоног төхөөрөмж", color: "#3b82f6" },
-    { label: "Нарны энерги", href: "https://solar.source.mn", external: true, description: "Нарны эрчим хүч", color: "#f59e0b" },
-    { label: "Инженеринг", href: "https://mmse.mn", external: true, description: "Төслийн удирдлага", color: "#22c55e" },
-    { label: "Барилгын шийдэл", href: "/business/construction", description: "Барилгын материал", color: "#6b7280" },
-    { label: "Уул уурхайн шийдэл", href: "/business/mining", description: "Уул уурхайн тоног төхөөрөмж", color: "#78716c" },
-  ],
-  en: [
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "Professional tools", color: "#ef4444" },
-    { label: "Electrical Products", href: "https://electric.source.mn", external: true, description: "Electrical equipment", color: "#3b82f6" },
-    { label: "Solar Energy", href: "https://solar.source.mn", external: true, description: "Solar power systems", color: "#f59e0b" },
-    { label: "Engineering", href: "https://mmse.mn", external: true, description: "Project management", color: "#22c55e" },
-    { label: "Construction", href: "/business/construction", description: "Construction materials", color: "#6b7280" },
-    { label: "Mining", href: "/business/mining", description: "Mining equipment", color: "#78716c" },
-  ],
-  zh: [
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "专业工具", color: "#ef4444" },
-    { label: "电气产品", href: "https://electric.source.mn", external: true, description: "电气设备", color: "#3b82f6" },
-    { label: "太阳能", href: "https://solar.source.mn", external: true, description: "太阳能系统", color: "#f59e0b" },
-    { label: "工程", href: "https://mmse.mn", external: true, description: "项目管理", color: "#22c55e" },
-    { label: "建筑", href: "/business/construction", description: "建筑材料", color: "#6b7280" },
-    { label: "采矿", href: "/business/mining", description: "采矿设备", color: "#78716c" },
-  ],
-};
+const businessItems: BusinessItem[] = [
+  { id: "milwaukee", href: "https://milwaukee.source.mn", external: true, color: "#ef4444" },
+  { id: "electric", href: "https://electric.source.mn", external: true, color: "#3b82f6" },
+  { id: "solar", href: "https://solar.source.mn", external: true, color: "#f59e0b" },
+  { id: "engineering", href: "https://mmse.mn", external: true, color: "#22c55e" },
+  { id: "construction", href: "/business/construction", color: "#6b7280" },
+  { id: "mining", href: "/business/mining", color: "#78716c" },
+];
 
 function LanguageSwitcher() {
   const locale = useLocale();
@@ -72,7 +53,7 @@ function LanguageSwitcher() {
 function BusinessDropdown({ locale }: { locale: string }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const items = businessItems[locale] ?? businessItems["en"];
+  const t = useTranslations();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -90,7 +71,7 @@ function BusinessDropdown({ locale }: { locale: string }) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
       >
-        {locale === "mn" ? "Бизнес" : locale === "zh" ? "业务" : "Business"}
+        {t('nav.business')}
         <svg
           className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
@@ -105,9 +86,9 @@ function BusinessDropdown({ locale }: { locale: string }) {
           <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
             {locale === "mn" ? "Бизнес чиглэлүүд" : locale === "zh" ? "业务方向" : "Business Directions"}
           </div>
-          {items.map((item, index) => (
+          {businessItems.map((item) => (
             <a
-              key={index}
+              key={item.id}
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
@@ -120,11 +101,8 @@ function BusinessDropdown({ locale }: { locale: string }) {
               />
               <div className="flex-1">
                 <div className="font-medium text-[#111] group-hover:text-[#22c55e] transition-colors">
-                  {item.label}
+                  {t(`businessHub.businesses.${item.id}.title`)}
                 </div>
-                {item.description && (
-                  <div className="text-xs text-gray-400">{item.description}</div>
-                )}
               </div>
               {item.external && (
                 <svg className="w-4 h-4 text-gray-300 group-hover:text-[#22c55e] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -142,7 +120,15 @@ function BusinessDropdown({ locale }: { locale: string }) {
 export default function Header({ locale }: { locale: string }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileBusinessOpen, setMobileBusinessOpen] = useState(false);
-  const items = businessItems[locale] ?? businessItems["en"];
+  const t = useTranslations();
+
+  const navItems = [
+    { label: 'nav.home', href: '/' },
+    { label: 'nav.about', href: '/about' },
+    { label: 'nav.projects', href: '/projects' },
+    { label: 'nav.news', href: '/news' },
+    { label: 'nav.contact', href: '/contact' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
@@ -163,42 +149,17 @@ export default function Header({ locale }: { locale: string }) {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1">
-            <Link
-              href="/"
-              locale={locale}
-              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {locale === "mn" ? "Нүүр" : locale === "zh" ? "首页" : "Home"}
-            </Link>
-            <Link
-              href="/about"
-              locale={locale}
-              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {locale === "mn" ? "Бидний тухай" : locale === "zh" ? "关于我们" : "About"}
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                locale={locale}
+                className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
+              >
+                {t(item.label)}
+              </Link>
+            ))}
             <BusinessDropdown locale={locale} />
-            <Link
-              href="/projects"
-              locale={locale}
-              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {locale === "mn" ? "Төслүүд" : locale === "zh" ? "项目" : "Projects"}
-            </Link>
-            <Link
-              href="/news"
-              locale={locale}
-              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {locale === "mn" ? "Мэдээ" : locale === "zh" ? "新闻" : "News"}
-            </Link>
-            <Link
-              href="/contact"
-              locale={locale}
-              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
-            >
-              {locale === "mn" ? "Холбоо барих" : locale === "zh" ? "联系我们" : "Contact"}
-            </Link>
           </nav>
 
           {/* Right Side */}
@@ -206,7 +167,7 @@ export default function Header({ locale }: { locale: string }) {
             <div className="relative">
               <input
                 type="text"
-                placeholder={locale === "mn" ? "Хайх..." : locale === "zh" ? "搜索..." : "Search..."}
+                placeholder={t('nav.search')}
                 className="w-44 pl-4 pr-10 py-2 text-sm bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#22c55e] focus:ring-2 focus:ring-[#22c55e]/10 transition-all placeholder:text-gray-400"
               />
               <svg
@@ -242,27 +203,22 @@ export default function Header({ locale }: { locale: string }) {
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-gray-100 bg-white">
           <div className="px-4 py-4 space-y-1">
-            <Link
-              href="/"
-              locale={locale}
-              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {locale === "mn" ? "Нүүр" : locale === "zh" ? "首页" : "Home"}
-            </Link>
-            <Link
-              href="/about"
-              locale={locale}
-              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {locale === "mn" ? "Бидний тухай" : locale === "zh" ? "关于我们" : "About"}
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                locale={locale}
+                className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t(item.label)}
+              </Link>
+            ))}
             <button
               onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
               className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
             >
-              {locale === "mn" ? "Бизнес" : locale === "zh" ? "业务" : "Business"}
+              {t('nav.business')}
               <svg
                 className={`w-4 h-4 transition-transform duration-200 ${mobileBusinessOpen ? "rotate-180" : ""}`}
                 fill="none"
@@ -274,9 +230,9 @@ export default function Header({ locale }: { locale: string }) {
             </button>
             {mobileBusinessOpen && (
               <div className="pl-4 space-y-1">
-                {items.map((item, index) => (
+                {businessItems.map((item) => (
                   <a
-                    key={index}
+                    key={item.id}
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
@@ -287,46 +243,17 @@ export default function Header({ locale }: { locale: string }) {
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: item.color }}
                     />
-                    <div>
-                      <div className="font-medium text-[#111]">{item.label}</div>
-                      {item.description && (
-                        <div className="text-xs text-gray-400">{item.description}</div>
-                      )}
-                    </div>
+                    <div className="font-medium text-[#111]">{t(`businessHub.businesses.${item.id}.title`)}</div>
                   </a>
                 ))}
               </div>
             )}
-            <Link
-              href="/projects"
-              locale={locale}
-              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {locale === "mn" ? "Төслүүд" : locale === "zh" ? "项目" : "Projects"}
-            </Link>
-            <Link
-              href="/news"
-              locale={locale}
-              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {locale === "mn" ? "Мэдээ" : locale === "zh" ? "新闻" : "News"}
-            </Link>
-            <Link
-              href="/contact"
-              locale={locale}
-              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {locale === "mn" ? "Холбоо барих" : locale === "zh" ? "联系我们" : "Contact"}
-            </Link>
           </div>
           <div className="px-4 py-4 border-t border-gray-100 space-y-4">
             <div className="relative">
               <input
                 type="text"
-                placeholder={locale === "mn" ? "Хайх..." : locale === "zh" ? "搜索..." : "Search..."}
+                placeholder={t('nav.search')}
                 className="w-full px-4 py-3 text-sm bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#22c55e] focus:ring-2 focus:ring-[#22c55e]/10"
               />
               <svg

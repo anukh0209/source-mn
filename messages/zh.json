@@ -17,13 +17,119 @@
     "solar": "太阳能"
   },
   "hero": {
+    "badge": "蒙古领先集团",
     "title": "MMS Group",
     "subtitle": "能源 • 工程 • 解决方案",
-    "cta": "探索我们的业务",
-    "learnMore": "了解更多"
+    "description": "MMS集团在建筑、采矿、工程、电气和太阳能领域的领先业务平台。",
+    "ctaExplore": "探索业务",
+    "ctaProducts": "查看产品",
+    "ctaContact": "联系我们"
+  },
+  "businessHub": {
+    "title": "业务平台",
+    "subtitle": "访问MMS集团的业务方向",
+    "badge": "业务",
+    "visit": "访问",
+    "businesses": {
+      "milwaukee": {
+        "title": "Milwaukee Tools",
+        "description": "专业工具和设备"
+      },
+      "electric": {
+        "title": "电气产品",
+        "description": "电气设备和电缆"
+      },
+      "solar": {
+        "title": "太阳能",
+        "description": "太阳能系统和安装"
+      },
+      "engineering": {
+        "title": "工程",
+        "description": "项目管理和设计"
+      },
+      "construction": {
+        "title": "建筑解决方案",
+        "description": "建筑材料和设备"
+      },
+      "mining": {
+        "title": "采矿解决方案",
+        "description": "采矿设备和解决方案"
+      }
+    }
+  },
+  "products": {
+    "title": "精选产品",
+    "subtitle": "来自我们的业务平台",
+    "badge": "产品",
+    "viewAll": "查看全部",
+    "items": {
+      "milwaukee": "Milwaukee M18 FUEL",
+      "solar": "太阳能板 500W",
+      "electric": "电缆",
+      "engineering": "工程服务"
+    }
+  },
+  "about": {
+    "badge": "关于我们",
+    "title": "关于MMS集团",
+    "description": "MMS集团是在蒙古运营的领先多行业集团。我们在建筑、采矿、工程、电气和太阳能领域实施国际标准解决方案。",
+    "cta": "了解更多",
+    "stats": {
+      "years": "年",
+      "projects": "项目",
+      "clients": "客户",
+      "businesses": "业务部门"
+    }
+  },
+  "projects": {
+    "title": "项目",
+    "subtitle": "我们业务领域的项目",
+    "badge": "项目",
+    "viewAll": "所有项目",
+    "items": {
+      "project1": {
+        "title": "建筑项目 1",
+        "description": "大型建筑项目",
+        "category": "建筑"
+      },
+      "project2": {
+        "title": "采矿项目 2",
+        "description": "采矿设备供应",
+        "category": "采矿"
+      },
+      "project3": {
+        "title": "太阳能项目",
+        "description": "太阳能安装",
+        "category": "太阳能"
+      }
+    }
+  },
+  "contactCta": {
+    "title": "让我们合作",
+    "description": "如需项目咨询，请联系我们",
+    "cta": "联系我们",
+    "email": "info@mms.mn"
   },
   "footer": {
     "rights": "版权所有",
-    "tagline": "能源 • 工程 • 解决方案"
+    "tagline": "能源 • 工程 • 解决方案",
+    "description": "建筑、采矿、工程、电气和太阳能解决方案。",
+    "links": "链接",
+    "businesses": "业务部门",
+    "contact": "联系我们"
+  },
+  "contactPage": {
+    "title": "联系我们",
+    "subtitle": "与我们联系",
+    "name": "姓名",
+    "email": "电子邮件",
+    "phone": "电话",
+    "message": "留言",
+    "submit": "发送",
+    "address": "地址",
+    "addressText": "蒙古国乌兰巴托",
+    "platforms": "业务平台",
+    "success": "谢谢！消息发送成功。",
+    "error": "发生错误。请重试。"
   }
 }

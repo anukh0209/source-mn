@@ -1,31 +1,10 @@
+"use client";
+
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-export default async function Footer({ locale }: { locale: string }) {
-  const content = {
-    mn: {
-      description: "Барилга, уул уурхай, инженеринг, цахилгаан болон нарны энергийн шийдлүүд.",
-      links: "Холбоосууд",
-      contact: "Холбоо барих",
-      businesses: "Бизнес чиглэлүүд",
-      rights: "Бүх эрх хуулиар хамгаалагдсан",
-    },
-    en: {
-      description: "Construction, mining, engineering, electrical and solar energy solutions.",
-      links: "Links",
-      contact: "Contact",
-      businesses: "Business Units",
-      rights: "All rights reserved",
-    },
-    zh: {
-      description: "建筑、采矿、工程、电气和太阳能解决方案。",
-      links: "链接",
-      contact: "联系我们",
-      businesses: "业务部门",
-      rights: "版权所有",
-    },
-  };
-
-  const t = content[locale as keyof typeof content] ?? content.en;
+export default function Footer({ locale }: { locale: string }) {
+  const t = useTranslations('footer');
 
   return (
     <footer className="bg-[#0a0a0a] text-white border-t border-white/5">
@@ -43,22 +22,22 @@ export default async function Footer({ locale }: { locale: string }) {
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed">
-              {t.description}
+              {t('description')}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 text-white">
-              {t.links}
+              {t('links')}
             </h3>
             <ul className="space-y-3">
               {[
-                { label: locale === "mn" ? "Нүүр" : locale === "zh" ? "首页" : "Home", href: "/" },
-                { label: locale === "mn" ? "Бидний тухай" : locale === "zh" ? "关于我们" : "About", href: "/about" },
-                { label: locale === "mn" ? "Төслүүд" : locale === "zh" ? "项目" : "Projects", href: "/projects" },
-                { label: locale === "mn" ? "Мэдээ" : locale === "zh" ? "新闻" : "News", href: "/news" },
-                { label: locale === "mn" ? "Холбоо барих" : locale === "zh" ? "联系我们" : "Contact", href: "/contact" },
+                { label: 'nav.home', href: "/" },
+                { label: 'nav.about', href: "/about" },
+                { label: 'nav.projects', href: "/projects" },
+                { label: 'nav.news', href: "/news" },
+                { label: 'nav.contact', href: "/contact" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -66,7 +45,7 @@ export default async function Footer({ locale }: { locale: string }) {
                     locale={locale}
                     className="text-gray-400 hover:text-[#22c55e] text-sm transition-colors"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </Link>
                 </li>
               ))}
@@ -76,14 +55,14 @@ export default async function Footer({ locale }: { locale: string }) {
           {/* Business Units */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 text-white">
-              {t.businesses}
+              {t('businesses')}
             </h3>
             <ul className="space-y-3">
               {[
-                { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", color: "#ef4444" },
-                { label: locale === "mn" ? "Цахилгаан" : locale === "zh" ? "电气" : "Electrical", href: "https://electric.source.mn", color: "#3b82f6" },
-                { label: locale === "mn" ? "Нарны энерги" : locale === "zh" ? "太阳能" : "Solar", href: "https://solar.source.mn", color: "#f59e0b" },
-                { label: locale === "mn" ? "Инженеринг" : locale === "zh" ? "工程" : "Engineering", href: "https://mmse.mn", color: "#22c55e" },
+                { label: 'nav.milwaukee', href: "https://milwaukee.source.mn", color: "#ef4444" },
+                { label: 'nav.electrical', href: "https://electric.source.mn", color: "#3b82f6" },
+                { label: 'nav.solar', href: "https://solar.source.mn", color: "#f59e0b" },
+                { label: 'nav.engineering', href: "https://mmse.mn", color: "#22c55e" },
               ].map((item) => (
                 <li key={item.href}>
                   <a
@@ -96,7 +75,7 @@ export default async function Footer({ locale }: { locale: string }) {
                       className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-150"
                       style={{ backgroundColor: item.color }}
                     />
-                    {item.label}
+                    {t(item.label)}
                   </a>
                 </li>
               ))}
@@ -106,7 +85,7 @@ export default async function Footer({ locale }: { locale: string }) {
           {/* Contact */}
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider mb-6 text-white">
-              {t.contact}
+              {t('contact')}
             </h3>
             <div className="space-y-3 text-sm text-gray-400">
               <p className="flex items-center gap-2">
@@ -134,7 +113,7 @@ export default async function Footer({ locale }: { locale: string }) {
 
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} MMS Group. {t.rights}.
+            © {new Date().getFullYear()} MMS Group. {t('rights')}.
           </p>
           <div className="flex items-center gap-6">
             <a href="#" className="text-gray-500 hover:text-white text-sm transition-colors">Privacy</a>
