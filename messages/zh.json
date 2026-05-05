@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "首页",
+    "about": "关于我们",
+    "business": "业务",
+    "products": "产品",
+    "projects": "项目",
+    "news": "新闻",
+    "contact": "联系我们",
+    "search": "搜索",
+    "construction": "建筑解决方案",
+    "mining": "采矿解决方案",
+    "greenBuilding": "绿色建筑",
+    "engineering": "工程",
+    "milwaukee": "Milwaukee Tools",
+    "electrical": "电气产品",
+    "solar": "太阳能"
+  },
+  "hero": {
+    "title": "MMS Group",
+    "subtitle": "能源 • 工程 • 解决方案",
+    "cta": "探索我们的业务",
+    "learnMore": "了解更多"
+  },
+  "footer": {
+    "rights": "版权所有",
+    "tagline": "能源 • 工程 • 解决方案"
+  }
+}

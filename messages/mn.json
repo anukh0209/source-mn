@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Нүүр",
+    "about": "Бидний тухай",
+    "business": "Бизнес",
+    "products": "Бүтээгдэхүүн",
+    "projects": "Төслүүд",
+    "news": "Мэдээ",
+    "contact": "Холбоо барих",
+    "search": "Хайх",
+    "construction": "Барилгын шийдэл",
+    "mining": "Уул уурхайн шийдэл",
+    "greenBuilding": "Ногоон барилга",
+    "engineering": "Инженеринг",
+    "milwaukee": "Milwaukee Tools",
+    "electrical": "Цахилгаан бүтээгдэхүүн",
+    "solar": "Нарны энерги"
+  },
+  "hero": {
+    "title": "MMS Group",
+    "subtitle": "Energy • Engineering • Solutions",
+    "cta": "Бизнесүүдээ үзэх",
+    "learnMore": "Дэлгэрэнгүй"
+  },
+  "footer": {
+    "rights": "Бүх эрх хуулиар хамгаалагдсан",
+    "tagline": "Energy • Engineering • Solutions"
+  }
+}

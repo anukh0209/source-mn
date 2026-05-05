@@ -1,0 +1,29 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "business": "Business",
+    "products": "Products",
+    "projects": "Projects",
+    "news": "News",
+    "contact": "Contact",
+    "search": "Search",
+    "construction": "Construction Solutions",
+    "mining": "Mining Solutions",
+    "greenBuilding": "Green Building",
+    "engineering": "Engineering",
+    "milwaukee": "Milwaukee Tools",
+    "electrical": "Electrical Products",
+    "solar": "Solar Energy"
+  },
+  "hero": {
+    "title": "MMS Group",
+    "subtitle": "Energy • Engineering • Solutions",
+    "cta": "Explore Our Businesses",
+    "learnMore": "Learn More"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "tagline": "Energy • Engineering • Solutions"
+  }
+}
