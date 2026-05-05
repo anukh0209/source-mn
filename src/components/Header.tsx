@@ -8,6 +8,8 @@ interface BusinessItem {
   label: string;
   href: string;
   external?: boolean;
+  description?: string;
+  color?: string;
 }
 
 const LABELS: Record<string, string> = {
@@ -18,31 +20,28 @@ const LABELS: Record<string, string> = {
 
 const businessItems: Record<string, BusinessItem[]> = {
   mn: [
-    { label: "Барилгын шийдэл", href: "/business/construction" },
-    { label: "Уул уурхайн шийдэл", href: "/business/mining" },
-    { label: "Ногоон барилга", href: "https://greenbuilding.mn", external: true },
-    { label: "Инженеринг", href: "https://mmse.mn", external: true },
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true },
-    { label: "Цахилгаан бүтээгдэхүүн", href: "https://electric.source.mn", external: true },
-    { label: "Нарны энерги", href: "https://solar.source.mn", external: true },
+    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "Мэргэжлийн багаж", color: "#ef4444" },
+    { label: "Цахилгаан бүтээгдэхүүн", href: "https://electric.source.mn", external: true, description: "Цахилгаан тоног төхөөрөмж", color: "#3b82f6" },
+    { label: "Нарны энерги", href: "https://solar.source.mn", external: true, description: "Нарны эрчим хүч", color: "#f59e0b" },
+    { label: "Инженеринг", href: "https://mmse.mn", external: true, description: "Төслийн удирдлага", color: "#22c55e" },
+    { label: "Барилгын шийдэл", href: "/business/construction", description: "Барилгын материал", color: "#6b7280" },
+    { label: "Уул уурхайн шийдэл", href: "/business/mining", description: "Уул уурхайн тоног төхөөрөмж", color: "#78716c" },
   ],
   en: [
-    { label: "Construction Solutions", href: "/business/construction" },
-    { label: "Mining Solutions", href: "/business/mining" },
-    { label: "Green Building", href: "https://greenbuilding.mn", external: true },
-    { label: "Engineering", href: "https://mmse.mn", external: true },
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true },
-    { label: "Electrical Products", href: "https://electric.source.mn", external: true },
-    { label: "Solar Energy", href: "https://solar.source.mn", external: true },
+    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "Professional tools", color: "#ef4444" },
+    { label: "Electrical Products", href: "https://electric.source.mn", external: true, description: "Electrical equipment", color: "#3b82f6" },
+    { label: "Solar Energy", href: "https://solar.source.mn", external: true, description: "Solar power systems", color: "#f59e0b" },
+    { label: "Engineering", href: "https://mmse.mn", external: true, description: "Project management", color: "#22c55e" },
+    { label: "Construction", href: "/business/construction", description: "Construction materials", color: "#6b7280" },
+    { label: "Mining", href: "/business/mining", description: "Mining equipment", color: "#78716c" },
   ],
   zh: [
-    { label: "建筑解决方案", href: "/business/construction" },
-    { label: "采矿解决方案", href: "/business/mining" },
-    { label: "绿色建筑", href: "https://greenbuilding.mn", external: true },
-    { label: "工程", href: "https://mmse.mn", external: true },
-    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true },
-    { label: "电气产品", href: "https://electric.source.mn", external: true },
-    { label: "太阳能", href: "https://solar.source.mn", external: true },
+    { label: "Milwaukee Tools", href: "https://milwaukee.source.mn", external: true, description: "专业工具", color: "#ef4444" },
+    { label: "电气产品", href: "https://electric.source.mn", external: true, description: "电气设备", color: "#3b82f6" },
+    { label: "太阳能", href: "https://solar.source.mn", external: true, description: "太阳能系统", color: "#f59e0b" },
+    { label: "工程", href: "https://mmse.mn", external: true, description: "项目管理", color: "#22c55e" },
+    { label: "建筑", href: "/business/construction", description: "建筑材料", color: "#6b7280" },
+    { label: "采矿", href: "/business/mining", description: "采矿设备", color: "#78716c" },
   ],
 };
 
@@ -51,16 +50,16 @@ function LanguageSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div className="flex gap-2 text-sm font-medium">
+    <div className="flex gap-1 text-sm font-medium">
       {["mn", "en", "zh"].map((l) => (
         <Link
           key={l}
           href={pathname}
           locale={l}
-          className={`px-2 py-1 rounded transition-colors ${
+          className={`px-3 py-1.5 rounded-lg transition-all ${
             l === locale
-              ? "bg-[#22c55e] text-white"
-              : "text-[#111] hover:bg-gray-100"
+              ? "bg-[#22c55e] text-white shadow-sm"
+              : "text-gray-600 hover:bg-gray-100 hover:text-[#111]"
           }`}
         >
           {LABELS[l] ?? l.toUpperCase()}
@@ -89,11 +88,11 @@ function BusinessDropdown({ locale }: { locale: string }) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+        className="flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
       >
         {locale === "mn" ? "Бизнес" : locale === "zh" ? "业务" : "Business"}
         <svg
-          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -102,17 +101,36 @@ function BusinessDropdown({ locale }: { locale: string }) {
         </svg>
       </button>
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 w-64 bg-white border border-gray-200 rounded-lg shadow-lg py-2 z-50">
+        <div className="absolute top-full left-0 mt-2 w-80 bg-white border border-gray-100 rounded-2xl shadow-2xl py-3 z-50">
+          <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+            {locale === "mn" ? "Бизнес чиглэлүүд" : locale === "zh" ? "业务方向" : "Business Directions"}
+          </div>
           {items.map((item, index) => (
             <a
               key={index}
               href={item.href}
               target={item.external ? "_blank" : undefined}
               rel={item.external ? "noopener noreferrer" : undefined}
-              className="block px-4 py-2 text-sm text-[#111] hover:bg-[#22c55e]/10 hover:text-[#22c55e] transition-colors"
+              className="flex items-center gap-3 px-4 py-3 mx-2 rounded-xl text-sm hover:bg-gray-50 transition-colors group"
               onClick={() => setIsOpen(false)}
             >
-              {item.label}
+              <div 
+                className="w-2 h-2 rounded-full flex-shrink-0"
+                style={{ backgroundColor: item.color }}
+              />
+              <div className="flex-1">
+                <div className="font-medium text-[#111] group-hover:text-[#22c55e] transition-colors">
+                  {item.label}
+                </div>
+                {item.description && (
+                  <div className="text-xs text-gray-400">{item.description}</div>
+                )}
+              </div>
+              {item.external && (
+                <svg className="w-4 h-4 text-gray-300 group-hover:text-[#22c55e] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              )}
             </a>
           ))}
         </div>
@@ -127,18 +145,18 @@ export default function Header({ locale }: { locale: string }) {
   const items = businessItems[locale] ?? businessItems["en"];
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-18 py-3">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <Link href="/" locale={locale} className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#22c55e] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
+            <Link href="/" locale={locale} className="flex items-center gap-3 group">
+              <div className="w-11 h-11 bg-[#22c55e] rounded-xl flex items-center justify-center shadow-sm group-hover:shadow-md transition-shadow">
+                <span className="text-white font-bold text-xl">M</span>
               </div>
               <div className="hidden sm:block">
-                <div className="text-lg font-bold text-[#111]">MMS Group</div>
-                <div className="text-xs text-gray-500">Energy • Engineering • Solutions</div>
+                <div className="text-lg font-bold text-[#111] leading-tight">MMS Group</div>
+                <div className="text-[11px] text-gray-400 font-medium tracking-wider">ENERGY • ENGINEERING • SOLUTIONS</div>
               </div>
             </Link>
           </div>
@@ -148,14 +166,14 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/"
               locale={locale}
-              className="px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
             >
               {locale === "mn" ? "Нүүр" : locale === "zh" ? "首页" : "Home"}
             </Link>
             <Link
               href="/about"
               locale={locale}
-              className="px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
             >
               {locale === "mn" ? "Бидний тухай" : locale === "zh" ? "关于我们" : "About"}
             </Link>
@@ -163,21 +181,21 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/projects"
               locale={locale}
-              className="px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
             >
               {locale === "mn" ? "Төслүүд" : locale === "zh" ? "项目" : "Projects"}
             </Link>
             <Link
               href="/news"
               locale={locale}
-              className="px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
             >
               {locale === "mn" ? "Мэдээ" : locale === "zh" ? "新闻" : "News"}
             </Link>
             <Link
               href="/contact"
               locale={locale}
-              className="px-3 py-2 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors"
+              className="px-4 py-2.5 text-sm font-medium text-[#111] hover:text-[#22c55e] transition-colors rounded-lg hover:bg-gray-50"
             >
               {locale === "mn" ? "Холбоо барих" : locale === "zh" ? "联系我们" : "Contact"}
             </Link>
@@ -189,7 +207,7 @@ export default function Header({ locale }: { locale: string }) {
               <input
                 type="text"
                 placeholder={locale === "mn" ? "Хайх..." : locale === "zh" ? "搜索..." : "Search..."}
-                className="w-40 px-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#22c55e] focus:ring-1 focus:ring-[#22c55e] transition-colors"
+                className="w-44 pl-4 pr-10 py-2 text-sm bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#22c55e] focus:ring-2 focus:ring-[#22c55e]/10 transition-all placeholder:text-gray-400"
               />
               <svg
                 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
@@ -200,13 +218,14 @@ export default function Header({ locale }: { locale: string }) {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
+            <div className="h-6 w-px bg-gray-200" />
             <LanguageSwitcher />
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-[#111]"
+            className="lg:hidden p-2.5 text-[#111] hover:bg-gray-50 rounded-lg transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {mobileMenuOpen ? (
@@ -222,11 +241,11 @@ export default function Header({ locale }: { locale: string }) {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-gray-100 bg-white">
-          <div className="px-4 py-3 space-y-1">
+          <div className="px-4 py-4 space-y-1">
             <Link
               href="/"
               locale={locale}
-              className="block px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "mn" ? "Нүүр" : locale === "zh" ? "首页" : "Home"}
@@ -234,18 +253,18 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/about"
               locale={locale}
-              className="block px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "mn" ? "Бидний тухай" : locale === "zh" ? "关于我们" : "About"}
             </Link>
             <button
               onClick={() => setMobileBusinessOpen(!mobileBusinessOpen)}
-              className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="w-full flex items-center justify-between px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
             >
               {locale === "mn" ? "Бизнес" : locale === "zh" ? "业务" : "Business"}
               <svg
-                className={`w-4 h-4 transition-transform ${mobileBusinessOpen ? "rotate-180" : ""}`}
+                className={`w-4 h-4 transition-transform duration-200 ${mobileBusinessOpen ? "rotate-180" : ""}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -261,10 +280,19 @@ export default function Header({ locale }: { locale: string }) {
                     href={item.href}
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
-                    className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg"
+                    className="flex items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:bg-gray-50 rounded-xl transition-colors"
                     onClick={() => setMobileMenuOpen(false)}
                   >
-                    {item.label}
+                    <div 
+                      className="w-2 h-2 rounded-full"
+                      style={{ backgroundColor: item.color }}
+                    />
+                    <div>
+                      <div className="font-medium text-[#111]">{item.label}</div>
+                      {item.description && (
+                        <div className="text-xs text-gray-400">{item.description}</div>
+                      )}
+                    </div>
                   </a>
                 ))}
               </div>
@@ -272,7 +300,7 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/projects"
               locale={locale}
-              className="block px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "mn" ? "Төслүүд" : locale === "zh" ? "项目" : "Projects"}
@@ -280,7 +308,7 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/news"
               locale={locale}
-              className="block px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "mn" ? "Мэдээ" : locale === "zh" ? "新闻" : "News"}
@@ -288,21 +316,21 @@ export default function Header({ locale }: { locale: string }) {
             <Link
               href="/contact"
               locale={locale}
-              className="block px-3 py-2 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-lg"
+              className="block px-4 py-3 text-sm font-medium text-[#111] hover:bg-gray-50 rounded-xl transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               {locale === "mn" ? "Холбоо барих" : locale === "zh" ? "联系我们" : "Contact"}
             </Link>
           </div>
-          <div className="px-4 py-3 border-t border-gray-100">
-            <div className="relative mb-3">
+          <div className="px-4 py-4 border-t border-gray-100 space-y-4">
+            <div className="relative">
               <input
                 type="text"
                 placeholder={locale === "mn" ? "Хайх..." : locale === "zh" ? "搜索..." : "Search..."}
-                className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:border-[#22c55e] focus:ring-1 focus:ring-[#22c55e]"
+                className="w-full px-4 py-3 text-sm bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-[#22c55e] focus:ring-2 focus:ring-[#22c55e]/10"
               />
               <svg
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
