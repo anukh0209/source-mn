@@ -6,8 +6,7 @@ const businesses = [
   {
     id: "renewable",
     href: "https://solar-source.vercel.app/mn",
-    color: "from-orange-500/80 to-red-600/80",
-    image: "/images/renewable.jpg",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -17,8 +16,7 @@ const businesses = [
   {
     id: "tools",
     href: "https://mms-ecommerce-br4g.vercel.app/",
-    color: "from-blue-500/80 to-blue-700/80",
-    image: "/images/tools.jpg",
+    image: "https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -29,8 +27,7 @@ const businesses = [
   {
     id: "panels",
     href: "https://www.mmse.mn/",
-    color: "from-green-500/80 to-emerald-600/80",
-    image: "/images/panels.jpg",
+    image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
@@ -40,8 +37,7 @@ const businesses = [
   {
     id: "mining",
     href: "https://www.mmse.mn/",
-    color: "from-gray-500/80 to-gray-700/80",
-    image: "/images/mining.jpg",
+    image: "https://images.unsplash.com/photo-1513828583688-c52646db42da?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
@@ -51,8 +47,7 @@ const businesses = [
   {
     id: "construction",
     href: "https://www.usgbc.org/articles/mongolia-s-mms-green-building-joins-leed-earth-campaign",
-    color: "from-teal-500/80 to-cyan-600/80",
-    image: "/images/construction.jpg",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -62,8 +57,7 @@ const businesses = [
   {
     id: "cable",
     href: "https://www.source.mn/",
-    color: "from-amber-500/80 to-orange-600/80",
-    image: "/images/corporate.jpg",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1200&auto=format&fit=crop",
     icon: (
       <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -107,35 +101,39 @@ export default function HomePage() {
                 href={business.href}
                 target={business.href.startsWith("http") ? "_blank" : undefined}
                 rel={business.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer"
+                className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer hover:-translate-y-1.5 transition-all duration-[350ms] ease-out"
               >
                 {/* Background Image */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${business.image})` }}
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[350ms] ease-out group-hover:scale-105"
+                  style={{ 
+                    backgroundImage: `url(${business.image})`
+                  }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+                  <div className="absolute inset-0" style={{
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25))'
+                  }} />
                 </div>
 
                 {/* Content */}
-                <div className="relative h-full flex flex-col justify-end p-6">
+                <div className="relative h-full flex flex-col justify-end p-6 z-10">
                   {/* Icon */}
-                  <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 text-white">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-4 text-white border border-white/30">
                     {business.icon}
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-white mb-2">
+                  <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
                     {t(`businesses.${business.id}.title`)}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-white/80 text-sm mb-4">
+                  <p className="text-white/90 text-sm mb-4 drop-shadow-md">
                     {t(`businesses.${business.id}.description`)}
                   </p>
 
                   {/* Link */}
-                  <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform">
+                  <div className="flex items-center text-white font-semibold group-hover:translate-x-2 transition-transform duration-300">
                     {t(`businesses.${business.id}.link`)}
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -144,7 +142,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-[5]" />
               </a>
             ))}
           </div>
