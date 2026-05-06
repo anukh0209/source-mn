@@ -36,9 +36,9 @@ export default function Header() {
               </a>
             </div>
             <div className="flex items-center gap-4">
-              <Link href="/about" locale={locale} className="hover:text-gray-300 transition-colors">
+              <a href={`https://about.source.mn/${locale}`} className="hover:text-gray-300 transition-colors">
                 {t('nav.about')}
-              </Link>
+              </a>
               <Link href="/career" locale={locale} className="hover:text-gray-300 transition-colors">
                 {t('nav.career')}
               </Link>
@@ -56,9 +56,9 @@ export default function Header() {
               <Link href="/" locale={locale} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
                 {t('nav.home')}
               </Link>
-              <Link href="/about" locale={locale} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
+              <a href={`https://about.source.mn/${locale}`} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
                 {t('nav.about')}
-              </Link>
+              </a>
             </div>
 
             {/* Center Logo */}
@@ -122,22 +122,22 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-100">
             <div className="px-4 py-4 space-y-2">
-              {[
-                { href: "/", label: t('nav.home') },
-                { href: "/about", label: t('nav.about') },
-                { href: "/career", label: t('nav.career') },
-                { href: "/contact", label: t('nav.contact') },
-              ].map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  locale={locale}
-                  className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              <Link href="/" locale={locale} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
+                onClick={() => setMobileMenuOpen(false)}>
+                {t('nav.home')}
+              </Link>
+              <a href={`https://about.source.mn/${locale}`} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
+                onClick={() => setMobileMenuOpen(false)}>
+                {t('nav.about')}
+              </a>
+              <Link href="/career" locale={locale} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
+                onClick={() => setMobileMenuOpen(false)}>
+                {t('nav.career')}
+              </Link>
+              <Link href="/contact" locale={locale} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
+                onClick={() => setMobileMenuOpen(false)}>
+                {t('nav.contact')}
+              </Link>
             </div>
           </div>
         )}
