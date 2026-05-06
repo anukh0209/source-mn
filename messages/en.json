@@ -17,32 +17,32 @@
     "title": "Business Directions",
     "renewable": {
       "title": "Electrical & Solar Energy Products",
-      "description": "Renewable energy solutions",
+      "description": "Solar panels, inverters, electrical products",
       "link": "Learn More"
     },
     "tools": {
       "title": "Milwaukee Tools Distribution",
-      "description": "Professional power tools",
+      "description": "Battery tools, official distributor of hand tools",
       "link": "Learn More"
     },
     "panels": {
       "title": "Engineering Services",
-      "description": "Electrical panels and cabinets",
+      "description": "Electrical design, installation, maintenance",
       "link": "Learn More"
     },
     "mining": {
       "title": "Mining",
-      "description": "Mining equipment and solutions",
+      "description": "Mining electrical equipment and solutions",
       "link": "Learn More"
     },
     "construction": {
       "title": "Green Building Solutions",
-      "description": "Construction materials and equipment",
+      "description": "LEED certified green building, sustainable solutions",
       "link": "Learn More"
     },
     "cable": {
       "title": "Corporation",
-      "description": "Electrical cables and wires",
+      "description": "MMS Group head office, management, policy",
       "link": "Learn More"
     }
   },

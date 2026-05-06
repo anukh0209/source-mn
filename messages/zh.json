@@ -17,32 +17,32 @@
     "title": "业务方向",
     "renewable": {
       "title": "电气与太阳能产品",
-      "description": "可再生能源解决方案",
+      "description": "太阳能板、逆变器、电气产品",
       "link": "了解更多"
     },
     "tools": {
       "title": "Milwaukee工具分销",
-      "description": "专业电动工具",
+      "description": "电池工具、手动工具官方经销商",
       "link": "了解更多"
     },
     "panels": {
       "title": "工程服务",
-      "description": "电气配电板和柜体",
+      "description": "电气设计、安装、维护",
       "link": "了解更多"
     },
     "mining": {
       "title": "采矿",
-      "description": "采矿设备和解决方案",
+      "description": "采矿电气设备和解决方案",
       "link": "了解更多"
     },
     "construction": {
       "title": "绿色建筑解决方案",
-      "description": "建筑材料和设备",
+      "description": "LEED认证绿色建筑、可持续解决方案",
       "link": "了解更多"
     },
     "cable": {
       "title": "企业",
-      "description": "电线电缆",
+      "description": "MMS集团总部、管理、政策",
       "link": "了解更多"
     }
   },
