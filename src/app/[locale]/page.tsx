@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 const businesses = [
   {
     id: "renewable",
-    href: "https://solar.source.mn",
+    href: "https://solar-source.vercel.app/mn",
     color: "from-orange-500/80 to-red-600/80",
     image: "/images/renewable.jpg",
     icon: (
