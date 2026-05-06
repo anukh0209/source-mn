@@ -1,387 +1,182 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 
-const businessHub = [
+const businesses = [
   {
-    id: "milwaukee",
-    href: "https://milwaukee.source.mn",
-    color: "#ef4444",
-    icon: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4",
-  },
-  {
-    id: "electric",
-    href: "https://electric.source.mn",
-    color: "#3b82f6",
-    icon: "M13 10V3L4 14h7v7l9-11h-7z",
-  },
-  {
-    id: "solar",
+    id: "renewable",
     href: "https://solar.source.mn",
-    color: "#f59e0b",
-    icon: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z",
+    color: "from-orange-500/80 to-red-600/80",
+    image: "/images/renewable.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+      </svg>
+    ),
   },
   {
-    id: "engineering",
-    href: "https://mmse.mn",
-    color: "#22c55e",
-    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    id: "tools",
+    href: "https://milwaukee.source.mn",
+    color: "from-blue-500/80 to-blue-700/80",
+    image: "/images/tools.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
   },
   {
-    id: "construction",
-    href: "/business/construction",
-    color: "#6b7280",
-    icon: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4",
+    id: "panels",
+    href: "https://electric.source.mn",
+    color: "from-green-500/80 to-emerald-600/80",
+    image: "/images/panels.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+      </svg>
+    ),
   },
   {
     id: "mining",
     href: "/business/mining",
-    color: "#78716c",
-    icon: "M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3",
+    color: "from-gray-500/80 to-gray-700/80",
+    image: "/images/mining.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+  },
+  {
+    id: "construction",
+    href: "/business/construction",
+    color: "from-teal-500/80 to-cyan-600/80",
+    image: "/images/construction.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+      </svg>
+    ),
+  },
+  {
+    id: "cable",
+    href: "https://electric.source.mn",
+    color: "from-amber-500/80 to-orange-600/80",
+    image: "/images/cable.jpg",
+    icon: (
+      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
   },
 ];
 
-const featuredProducts = [
-  { id: "milwaukee", source: "Milwaukee", href: "https://milwaukee.source.mn", color: "#ef4444" },
-  { id: "solar", source: "Solar", href: "https://solar.source.mn", color: "#f59e0b" },
-  { id: "electric", source: "Electric", href: "https://electric.source.mn", color: "#3b82f6" },
-  { id: "engineering", source: "Engineering", href: "https://mmse.mn", color: "#22c55e" },
-];
-
-const stats = [
-  { value: "15+", key: "years" },
-  { value: "500+", key: "projects" },
-  { value: "1000+", key: "clients" },
-  { value: "6", key: "businesses" },
-];
-
-const projects = [
-  { id: "project1", category: "Construction" },
-  { id: "project2", category: "Mining" },
-  { id: "project3", category: "Solar" },
-];
-
-export default function HomePage({ params }: { params: { locale: string } }) {
-  const { locale } = params;
+export default function HomePage() {
   const t = useTranslations();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-[#111] overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#111] via-[#1a1a1a] to-[#0a0a0a]" />
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-[#22c55e]/20 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-[#3b82f6]/10 rounded-full blur-3xl" />
-
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-[#22c55e] text-sm font-medium mb-8 border border-white/10">
-              <span className="w-2 h-2 bg-[#22c55e] rounded-full animate-pulse" />
-              {t('hero.badge')}
-            </div>
-            
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight mb-6">
-              {t('hero.title')}
-            </h1>
-            
-            <p className="text-2xl text-gray-400 mb-4 font-light">
-              {t('hero.subtitle')}
-            </p>
-            
-            <p className="text-lg text-gray-500 mb-12 max-w-2xl leading-relaxed">
-              {t('hero.description')}
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#business-hub"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#22c55e] text-white font-semibold rounded-lg hover:bg-[#16a34a] transition-all hover:shadow-lg hover:shadow-[#22c55e]/25"
-              >
-                {t('hero.ctaExplore')}
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </a>
-              <Link
-                href="/business"
-                locale={locale}
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/20 transition-all border border-white/10"
-              >
-                {t('hero.ctaProducts')}
-              </Link>
-              <Link
-                href="/contact"
-                locale={locale}
-                className="inline-flex items-center justify-center px-8 py-4 text-white font-semibold rounded-lg hover:bg-white/5 transition-all"
-              >
-                {t('hero.ctaContact')}
-              </Link>
-            </div>
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background with overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-800 via-gray-700 to-gray-600">
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center">
+            <div className="absolute inset-0 bg-black/50" />
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+        {/* Content */}
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-wider mb-6">
+            {t('hero.headline')}
+          </h1>
+          <p className="text-xl text-gray-300 tracking-wide">
+            {t('hero.subheadline')}
+          </p>
         </div>
       </section>
 
-      {/* Business Hub Section */}
-      <section id="business-hub" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#22c55e]/10 rounded-full text-[#22c55e] text-sm font-medium mb-4">
-              {t('businessHub.badge')}
-            </div>
-            <h2 className="text-4xl font-bold text-[#111] mb-4">
-              {t('businessHub.title')}
-            </h2>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-              {t('businessHub.subtitle')}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {businessHub.map((business) => (
+      {/* Business Cards Section */}
+      <section className="relative z-20 -mt-32 pb-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+            {businesses.map((business) => (
               <a
                 key={business.id}
                 href={business.href}
                 target={business.href.startsWith("http") ? "_blank" : undefined}
                 rel={business.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group relative p-8 bg-gray-50 rounded-2xl hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-transparent overflow-hidden"
+                className="group relative h-80 rounded-2xl overflow-hidden cursor-pointer"
               >
-                <div 
-                  className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity duration-500"
-                  style={{ backgroundColor: business.color }}
-                />
-                
-                <div className="relative">
-                  <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3"
-                    style={{ backgroundColor: `${business.color}15` }}
-                  >
-                    <svg 
-                      className="w-8 h-8 transition-colors duration-300" 
-                      style={{ color: business.color }}
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={business.icon} />
-                    </svg>
+                {/* Background Image */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${business.color}`}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                </div>
+
+                {/* Content */}
+                <div className="relative h-full flex flex-col justify-end p-6">
+                  {/* Icon */}
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mb-4 text-white">
+                    {business.icon}
                   </div>
 
-                  <h3 className="text-xl font-bold text-[#111] mb-3 group-hover:text-[#22c55e] transition-colors">
-                    {t(`businessHub.businesses.${business.id}.title`)}
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    {t(`businesses.${business.id}.title`)}
                   </h3>
-                  <p className="text-gray-500 mb-6 leading-relaxed">
-                    {t(`businessHub.businesses.${business.id}.description`)}
+
+                  {/* Description */}
+                  <p className="text-white/80 text-sm mb-4">
+                    {t(`businesses.${business.id}.description`)}
                   </p>
 
-                  <div className="flex items-center text-sm font-semibold" style={{ color: business.color }}>
-                    {t('businessHub.visit')}
-                    <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  {/* Link */}
+                  <div className="flex items-center text-white font-medium group-hover:translate-x-2 transition-transform">
+                    {t(`businesses.${business.id}.link`)}
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
                 </div>
+
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#22c55e]/10 rounded-full text-[#22c55e] text-sm font-medium mb-4">
-                {t('products.badge')}
-              </div>
-              <h2 className="text-4xl font-bold text-[#111]">{t('products.title')}</h2>
-              <p className="text-xl text-gray-500 mt-2">{t('products.subtitle')}</p>
-            </div>
-            <Link
-              href="/business"
-              locale={locale}
-              className="mt-4 sm:mt-0 inline-flex items-center text-[#22c55e] font-semibold hover:underline"
-            >
-              {t('products.viewAll')}
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProducts.map((product) => (
-              <a
-                key={product.id}
-                href={product.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 border border-gray-100"
-              >
-                <div 
-                  className="w-full h-40 rounded-xl mb-4 flex items-center justify-center transition-transform duration-300 group-hover:scale-105"
-                  style={{ backgroundColor: `${product.color}10` }}
-                >
-                  <div 
-                    className="w-16 h-16 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: `${product.color}20` }}
-                  >
-                    <svg className="w-8 h-8" style={{ color: product.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-2 mb-2">
-                  <span 
-                    className="px-2 py-1 rounded text-xs font-medium text-white"
-                    style={{ backgroundColor: product.color }}
-                  >
-                    {product.source}
-                  </span>
-                </div>
-                <h3 className="font-semibold text-[#111] group-hover:text-[#22c55e] transition-colors">
-                  {t(`products.items.${product.id}`)}
-                </h3>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#22c55e]/10 rounded-full text-[#22c55e] text-sm font-medium mb-4">
-                {t('about.badge')}
-              </div>
-              <h2 className="text-4xl font-bold text-[#111] mb-6">
-                {t('about.title')}
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
-                {t('about.description')}
-              </p>
-              <Link
-                href="/about"
-                locale={locale}
-                className="inline-flex items-center px-6 py-3 bg-[#111] text-white font-semibold rounded-lg hover:bg-[#333] transition-colors"
-              >
-                {t('about.cta')}
-                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-2 gap-6">
-              {stats.map((stat) => (
-                <div key={stat.key} className="p-8 bg-gray-50 rounded-2xl text-center hover:bg-[#22c55e]/5 transition-colors">
-                  <div className="text-4xl font-bold text-[#22c55e] mb-2">{stat.value}</div>
-                  <div className="text-gray-500 font-medium">{t(`about.stats.${stat.key}`)}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="py-24 bg-[#111]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-12">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#22c55e] text-sm font-medium mb-4">
-                {t('projects.badge')}
-              </div>
-              <h2 className="text-4xl font-bold text-white">{t('projects.title')}</h2>
-              <p className="text-xl text-gray-400 mt-2">{t('projects.subtitle')}</p>
-            </div>
-            <Link
-              href="/projects"
-              locale={locale}
-              className="mt-4 sm:mt-0 inline-flex items-center text-[#22c55e] font-semibold hover:underline"
-            >
-              {t('projects.viewAll')}
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group relative bg-[#1a1a1a] rounded-2xl overflow-hidden border border-white/5 hover:border-[#22c55e]/30 transition-all duration-300"
-              >
-                <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <svg className="w-12 h-12 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                
-                <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-[#22c55e]/10 text-[#22c55e] text-xs font-medium rounded-full mb-3">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-[#22c55e] transition-colors">
-                    {t(`projects.items.${project.id}.title`)}
-                  </h3>
-                  <p className="text-gray-400 text-sm">
-                    {t(`projects.items.${project.id}.description`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact CTA Section */}
-      <section className="py-24 bg-[#22c55e]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            {t('contactCta.title')}
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            {t('contactCta.description')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              locale={locale}
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-[#22c55e] font-bold rounded-lg hover:bg-gray-100 transition-colors shadow-lg"
-            >
-              {t('contactCta.cta')}
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <a
-              href="mailto:info@mms.mn"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-bold rounded-lg hover:bg-white/10 transition-colors border-2 border-white/30"
-            >
-              {t('contactCta.email')}
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Floating Action Button */}
+      <div className="fixed right-4 bottom-4 z-50 flex flex-col gap-2">
+        <a
+          href="tel:+97677111999"
+          className="w-12 h-12 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2a4a6f] transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+          </svg>
+        </a>
+        <a
+          href="mailto:sales@source.mn"
+          className="w-12 h-12 bg-[#1e3a5f] rounded-full flex items-center justify-center text-white shadow-lg hover:bg-[#2a4a6f] transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </a>
+        <a
+          href="https://wa.me/97677111999"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white shadow-lg hover:bg-green-600 transition-colors"
+        >
+          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 }

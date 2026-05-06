@@ -46,9 +46,9 @@ export default async function LocaleLayout({
       <body className="min-h-full flex flex-col bg-white text-[#111]">
         <NextIntlClientProvider messages={messages}>
           <ApolloClientProvider>
-            <Header locale={locale} />
+            <Header />
             <main className="flex-1">{children}</main>
-            <Footer locale={locale} />
+            <Footer />
           </ApolloClientProvider>
         </NextIntlClientProvider>
       </body>
