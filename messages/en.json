@@ -16,17 +16,17 @@
   "businesses": {
     "title": "Business Directions",
     "renewable": {
-      "title": "Renewable",
+      "title": "Electrical & Solar Energy Products",
       "description": "Renewable energy solutions",
       "link": "Learn More"
     },
     "tools": {
-      "title": "Battery Tools",
+      "title": "Milwaukee Tools Distribution",
       "description": "Professional power tools",
       "link": "Learn More"
     },
     "panels": {
-      "title": "Panels",
+      "title": "Engineering Services",
       "description": "Electrical panels and cabinets",
       "link": "Learn More"
     },
@@ -36,12 +36,12 @@
       "link": "Learn More"
     },
     "construction": {
-      "title": "Construction",
+      "title": "Green Building Solutions",
       "description": "Construction materials and equipment",
       "link": "Learn More"
     },
     "cable": {
-      "title": "Cable",
+      "title": "Corporation",
       "description": "Electrical cables and wires",
       "link": "Learn More"
     }

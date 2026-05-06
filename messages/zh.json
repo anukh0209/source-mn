@@ -16,17 +16,17 @@
   "businesses": {
     "title": "业务方向",
     "renewable": {
-      "title": "可再生能源",
+      "title": "电气与太阳能产品",
       "description": "可再生能源解决方案",
       "link": "了解更多"
     },
     "tools": {
-      "title": "电动工具",
+      "title": "Milwaukee工具分销",
       "description": "专业电动工具",
       "link": "了解更多"
     },
     "panels": {
-      "title": "配电板",
+      "title": "工程服务",
       "description": "电气配电板和柜体",
       "link": "了解更多"
     },
@@ -36,12 +36,12 @@
       "link": "了解更多"
     },
     "construction": {
-      "title": "建筑",
+      "title": "绿色建筑解决方案",
       "description": "建筑材料和设备",
       "link": "了解更多"
     },
     "cable": {
-      "title": "电缆",
+      "title": "企业",
       "description": "电线电缆",
       "link": "了解更多"
     }

@@ -16,7 +16,7 @@ const businesses = [
   },
   {
     id: "tools",
-    href: "https://milwaukee.source.mn",
+    href: "https://mms-ecommerce-br4g.vercel.app/",
     color: "from-blue-500/80 to-blue-700/80",
     image: "/images/tools.jpg",
     icon: (
@@ -28,7 +28,7 @@ const businesses = [
   },
   {
     id: "panels",
-    href: "https://electric.source.mn",
+    href: "https://www.mmse.mn/",
     color: "from-green-500/80 to-emerald-600/80",
     image: "/images/panels.jpg",
     icon: (
@@ -39,7 +39,7 @@ const businesses = [
   },
   {
     id: "mining",
-    href: "/business/mining",
+    href: "https://www.mmse.mn/",
     color: "from-gray-500/80 to-gray-700/80",
     image: "/images/mining.jpg",
     icon: (
@@ -50,7 +50,7 @@ const businesses = [
   },
   {
     id: "construction",
-    href: "/business/construction",
+    href: "https://www.usgbc.org/articles/mongolia-s-mms-green-building-joins-leed-earth-campaign",
     color: "from-teal-500/80 to-cyan-600/80",
     image: "/images/construction.jpg",
     icon: (
@@ -61,7 +61,7 @@ const businesses = [
   },
   {
     id: "cable",
-    href: "https://electric.source.mn",
+    href: "https://www.source.mn/",
     color: "from-amber-500/80 to-orange-600/80",
     image: "/images/cable.jpg",
     icon: (

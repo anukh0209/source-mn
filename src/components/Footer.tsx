@@ -30,22 +30,26 @@ export default function Footer() {
               {t('nav.about')}
             </h3>
             <ul className="space-y-2">
-              {[
-                { href: "/", label: t('nav.home') },
-                { href: "/about", label: t('nav.about') },
-                { href: "/career", label: t('nav.career') },
-                { href: "/contact", label: t('nav.contact') },
-              ].map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    locale={locale}
-                    className="text-white/70 hover:text-white text-sm transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/" locale={locale} className="text-white/70 hover:text-white text-sm transition-colors">
+                  {t('nav.home')}
+                </Link>
+              </li>
+              <li>
+                <a href={`https://about-source-mn.vercel.app/${locale}`} className="text-white/70 hover:text-white text-sm transition-colors">
+                  {t('nav.about')}
+                </a>
+              </li>
+              <li>
+                <Link href="/career" locale={locale} className="text-white/70 hover:text-white text-sm transition-colors">
+                  {t('nav.career')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" locale={locale} className="text-white/70 hover:text-white text-sm transition-colors">
+                  {t('nav.contact')}
+                </Link>
+              </li>
             </ul>
           </div>
 

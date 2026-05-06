@@ -36,7 +36,7 @@ export default function Header() {
               </a>
             </div>
             <div className="flex items-center gap-4">
-              <a href={`https://about.source.mn/${locale}`} className="hover:text-gray-300 transition-colors">
+              <a href={`https://about-source-mn.vercel.app/${locale}`} className="hover:text-gray-300 transition-colors">
                 {t('nav.about')}
               </a>
               <Link href="/career" locale={locale} className="hover:text-gray-300 transition-colors">
@@ -56,7 +56,7 @@ export default function Header() {
               <Link href="/" locale={locale} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
                 {t('nav.home')}
               </Link>
-              <a href={`https://about.source.mn/${locale}`} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
+              <a href={`https://about-source-mn.vercel.app/${locale}`} className="text-[#111] hover:text-[#1e3a5f] font-medium transition-colors">
                 {t('nav.about')}
               </a>
             </div>
@@ -126,7 +126,7 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.home')}
               </Link>
-              <a href={`https://about.source.mn/${locale}`} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
+              <a href={`https://about-source-mn.vercel.app/${locale}`} className="block px-4 py-3 text-[#111] hover:bg-gray-50 rounded-lg font-medium"
                 onClick={() => setMobileMenuOpen(false)}>
                 {t('nav.about')}
               </a>
