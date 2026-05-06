@@ -46,6 +46,60 @@
       "link": "了解更多"
     }
   },
+  "about": {
+    "pageTitle": "关于我们",
+    "pageSubtitle": "MMS集团 - 蒙古领先的多行业集团",
+    "intro": "MMS集团成立于2009年，现已发展成为蒙古建筑、采矿、电气和太阳能领域的领先多行业集团。我们通过国际认证的产品和解决方案赢得了客户的信任。",
+    "history": {
+      "title": "发展历程",
+      "year2009": "2009年 - MMS集团成立",
+      "year2012": "2012年 - 成为Milwaukee Tools官方经销商",
+      "year2015": "2015年 - 成立电气产品部门",
+      "year2018": "2018年 - 投资太阳能领域",
+      "year2021": "2021年 - 开设建筑解决方案中心",
+      "year2024": "2024年 - 庆祝成立15周年"
+    },
+    "mission": {
+      "title": "使命",
+      "content": "通过优质的产品和解决方案赢得客户的信任。我们致力于为蒙古的发展做出贡献。"
+    },
+    "vision": {
+      "title": "愿景",
+      "content": "成为蒙古发展的主导力量。我们的目标是成为能够在国际市场竞争的创新型集团公司。"
+    },
+    "values": {
+      "title": "价值观",
+      "quality": "质量",
+      "trust": "信任",
+      "innovation": "创新",
+      "sustainability": "可持续发展"
+    },
+    "stats": {
+      "years": "年",
+      "yearsValue": "15+",
+      "employees": "员工",
+      "employeesValue": "200+",
+      "partners": "合作伙伴",
+      "partnersValue": "1000+",
+      "projects": "项目",
+      "projectsValue": "500+"
+    },
+    "businessUnits": {
+      "title": "业务部门",
+      "description": "MMS集团在以下6个方向开展业务："
+    },
+    "certifications": {
+      "title": "认证与标准",
+      "iso9001": "ISO 9001:2015 质量管理体系",
+      "iso14001": "ISO 14001:2015 环境管理体系",
+      "ohsas": "OHSAS 18001 职业健康安全"
+    },
+    "cta": {
+      "title": "让我们合作",
+      "description": "联系我们咨询您的项目",
+      "button": "联系我们"
+    }
+  },
   "footer": {
     "description": "MMS集团是建筑、采矿、电气和太阳能领域的领先企业集团。",
     "rights": "版权所有",

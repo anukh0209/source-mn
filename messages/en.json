@@ -46,6 +46,60 @@
       "link": "Learn More"
     }
   },
+  "about": {
+    "pageTitle": "About Us",
+    "pageSubtitle": "MMS Group - Mongolia's Leading Multi-Industry Group",
+    "intro": "Founded in 2009, MMS Group has grown to become a leading multi-industry conglomerate in Mongolia's construction, mining, electrical, and solar energy sectors. We have earned our customers' trust through internationally certified products and solutions.",
+    "history": {
+      "title": "Our History",
+      "year2009": "2009 - MMS Group was founded",
+      "year2012": "2012 - Became official distributor of Milwaukee Tools",
+      "year2015": "2015 - Launched Electrical Products division",
+      "year2018": "2018 - Invested in Solar Energy sector",
+      "year2021": "2021 - Opened Construction Solutions Center",
+      "year2024": "2024 - Celebrated 15th anniversary"
+    },
+    "mission": {
+      "title": "Mission",
+      "content": "To earn our customers' trust through quality products and solutions. We are committed to contributing to Mongolia's development."
+    },
+    "vision": {
+      "title": "Vision",
+      "content": "To become the leading force in Mongolia's development. We aim to become an innovative group company capable of competing in the international market."
+    },
+    "values": {
+      "title": "Our Values",
+      "quality": "Quality",
+      "trust": "Trust",
+      "innovation": "Innovation",
+      "sustainability": "Sustainability"
+    },
+    "stats": {
+      "years": "Years",
+      "yearsValue": "15+",
+      "employees": "Employees",
+      "employeesValue": "200+",
+      "partners": "Partners",
+      "partnersValue": "1000+",
+      "projects": "Projects",
+      "projectsValue": "500+"
+    },
+    "businessUnits": {
+      "title": "Business Units",
+      "description": "MMS Group operates in the following 6 directions:"
+    },
+    "certifications": {
+      "title": "Certifications & Standards",
+      "iso9001": "ISO 9001:2015 Quality Management System",
+      "iso14001": "ISO 14001:2015 Environmental Management",
+      "ohsas": "OHSAS 18001 Occupational Health & Safety"
+    },
+    "cta": {
+      "title": "Let's Work Together",
+      "description": "Contact us for consultation on your project",
+      "button": "Contact Us"
+    }
+  },
   "footer": {
     "description": "MMS Group is a leading conglomerate in construction, mining, electrical, and solar energy sectors.",
     "rights": "All rights reserved",
